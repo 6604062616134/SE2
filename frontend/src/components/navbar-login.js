@@ -55,7 +55,7 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
                         onClick={handleToggle}
                         className="text-white text-xl z-10"
                     >
-                        {isCollapsed ? '✖' : '☰'}
+                        {isCollapsed ? '☰' : '☰'}
                     </button>
                     {/* จัดให้อยู่กลาง */}
                     <div className='text-center'>

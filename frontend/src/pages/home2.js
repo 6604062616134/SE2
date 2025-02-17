@@ -272,10 +272,11 @@ function Home() {
     return (
         <div>
             <Navbar />
-            <div className='flex justify-center min-h-screen'>
+            <div className='flex justify-center items-center min-h-screen' style={{ position: 'relative', width: '100%', height: '100%', top: '-100px' }}>
                 <div className='container mx-auto'>
-                    <h1 className='text-4xl font-bold mt-8'>Find Your Boardgames !</h1>
-                    <form onSubmit={handleSearchSubmit} className="mt-5 flex items-center gap-4">
+                    <h1 className='text-4xl font-bold' style={{ position: 'absolute', left: '15%', top: '140px' }}>Find Your Boardgames !</h1>
+                    {/* search bar */}
+                    <form onSubmit={handleSearchSubmit} className="mt-5 flex items-center gap-4" style={{ position: 'absolute', left: '15%', top: '200px', width: '70%' }}>
                         <div className="relative flex-grow">
                             <FontAwesomeIcon icon={faSearch} className="text-black absolute left-3 top-1/2 transform -translate-y-1/2" />
                             <input
@@ -343,7 +344,7 @@ function Home() {
                             <button type="submit" className='btn-search'>Search</button>
                         </div>
                     </form>
-                    <div className="mt-10 flex justify-center gap-20 flex-wrap">
+                    <div className="mt-10 flex justify-center gap-20" style={{ position: 'absolute', left: '21%', top: '260px' }}>
                         <div className="flex flex-col items-center">
                             <button onClick={() => handleCategoryClick('Party')} className="bg-transparent border-none p-0">
                                 <img src="/images/partygame.jpg" alt="Party games" className="circular-image" />
@@ -369,11 +370,11 @@ function Home() {
                             <button onClick={() => handleCategoryClick('Strategy')} className='hover:underline text-xl font-semibold mt-2 bg-transparent border-none p-0'>Strategy games</button>
                         </div>
                     </div>
-                    {/* การ์ดแสดงข้อมูลบอร์ดเกมที่recommended */}
-                    {showRecommended && (
-                        <div className='flex flex-col mt-10 gap-4'>
-                            <p className="text-2xl font-semibold ml-10">Recommended</p>
-                            <div className="flex flex-row flex-wrap gap-4 justify-center">
+                    <div>
+                        {/* การ์ดแสดงข้อมูลบอร์ดเกมที่recommended */}
+                        {showRecommended && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ position: 'absolute', left: '19%', top: '540px' }}>
+                                <p className="text-2xl font-semibold col-span-full">Recommended</p>
                                 {recommended.map((boardgame) => (
                                     <div key={boardgame.boardgame_id} className="bg-transparent shadow-lg p-3" style={{ border: '1px solid black', borderRadius: '38px' }}>
                                         <img src={boardgame.imagePath} alt={boardgame.boardgame_name} className="w-[280px] h-[220px] object-fill" style={{ borderTopLeftRadius: '38px', borderTopRightRadius: '38px' }} />
@@ -397,13 +398,12 @@ function Home() {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    )}
-
-                    {showPopular && (
-                        <div className='flex flex-col mt-10 gap-4'>
-                            <p className="text-2xl font-semibold ml-10">Popular</p>
-                            <div className="flex flex-row flex-wrap gap-4 justify-center">
+                        )}
+                    </div>
+                    <div>
+                        {showPopular && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 pb-12 pt-16" style={{ position: 'absolute', left: '19%', top: '1380px' }}>
+                                <p className="text-2xl font-semibold col-span-full">Popular</p>
                                 {popular.map((boardgame) => (
                                     <div key={boardgame.boardgame_id} className="bg-transparent shadow-lg p-3" style={{ border: '1px solid black', borderRadius: '38px' }}>
                                         <img src={boardgame.imagePath} alt={boardgame.boardgame_name} className="w-[280px] h-[220px] object-fill" style={{ borderTopLeftRadius: '38px', borderTopRightRadius: '38px' }} />
@@ -427,9 +427,8 @@ function Home() {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    )}
-
+                        )}
+                    </div>
                     {/* modalยืมบอร์ดเกม */}
                     {selectedGame && (
                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -503,9 +502,8 @@ function Home() {
                             </div>
                         </div>
                     )}
-
                     {/* ส่วนแสดงผลเสิร์ช */}
-                    <div className="flex flex-row flex-wrap gap-4 justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5" style={{ position: 'absolute', left: '20%', top: '575px' }}>
                         {boardgames.length > 0 ? (
                             boardgames.map((game) => (
                                 <div key={game.id} className="bg-transparent shadow-lg p-3" style={{ border: '1px solid black', borderRadius: '38px' }}>
