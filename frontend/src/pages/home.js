@@ -240,7 +240,7 @@ function Home() {
             alert("Please log in to borrow a board game.");
             return;
         }
-    
+
         if (selectedGame) {
             await borrowSubmit(selectedGame.boardgame_id, token);
             setSelectedGame(null);
@@ -275,20 +275,22 @@ function Home() {
             <div className='flex justify-center min-h-screen'>
                 <div className='container mx-auto'>
                     <h1 className='text-4xl font-bold mt-8'>Find Your Boardgames !</h1>
-                    <form onSubmit={handleSearchSubmit} className="mt-5 flex items-center gap-4">
-                        <div className="relative flex-grow">
-                            <FontAwesomeIcon icon={faSearch} className="text-black absolute left-3 top-1/2 transform -translate-y-1/2" />
-                            <input
-                                type="text"
-                                placeholder="Search Boardgames ..."
-                                name="search"
-                                value={searchTerm}
-                                onChange={handleSearchChange}
-                                className="border border-black rounded-3xl p-2 pl-10 bg-transparent w-full"
-                                style={{ borderWidth: '1px' }}
-                            />
+                    <form onSubmit={handleSearchSubmit} className="flex flex-col lg:flex-row justify-center items-center mt-8">
+                        <div className="xl:w-full w-2/3">
+                            <div className="border border-black rounded-3xl p-2 pl-6 bg-transparent w-full flex items-center justify-between gap-4">
+                                <FontAwesomeIcon icon={faSearch} className="" />
+                                <input
+                                    type="text"
+                                    placeholder="Search Boardgames ..."
+                                    name="search"
+                                    value={searchTerm}
+                                    onChange={handleSearchChange}
+                                    className="bg-transparent w-full border-none focus:outline-none ml-2"
+                                    style={{ borderWidth: '1px' }}
+                                />  
+                            </div>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 w-2/3 justify-center mt-8 lg:mt-0">
                             <div className="relative">
                                 <button type="button" className='btn-custom' onClick={toggleCategoryDropdown}>
                                     {selectedCategory}
@@ -372,7 +374,7 @@ function Home() {
                     {/* การ์ดแสดงข้อมูลบอร์ดเกมที่recommended */}
                     {showRecommended && (
                         <div className='flex flex-col mt-10 gap-4'>
-                            <p className="text-2xl font-semibold ml-10">Recommended</p>
+                            <p className="text-2xl font-semibold ml-48">Recommended</p>
                             <div className="flex flex-row flex-wrap gap-4 justify-center">
                                 {recommended.map((boardgame) => (
                                     <div key={boardgame.boardgame_id} className="bg-transparent shadow-lg p-3" style={{ border: '1px solid black', borderRadius: '38px' }}>
@@ -401,8 +403,8 @@ function Home() {
                     )}
 
                     {showPopular && (
-                        <div className='flex flex-col mt-10 gap-4'>
-                            <p className="text-2xl font-semibold ml-10">Popular</p>
+                        <div className='flex flex-col mt-10 mb-12 gap-4'>
+                            <p className="text-2xl font-semibold ml-48">Popular</p>
                             <div className="flex flex-row flex-wrap gap-4 justify-center">
                                 {popular.map((boardgame) => (
                                     <div key={boardgame.boardgame_id} className="bg-transparent shadow-lg p-3" style={{ border: '1px solid black', borderRadius: '38px' }}>
